@@ -16,8 +16,15 @@ const (
 	INT   = "INT"   // 1343456
 
 	// 运算符
-	ASSIGN = "="
-	PLUS   = "+"
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+
+	LT = "<"
+	GT = ">"
 
 	// 分隔符
 	COMMA     = ","
@@ -32,3 +39,15 @@ const (
 	FUNCTION = "FUNCTION"
 	LET      = "LET"
 )
+
+var keywords = map[string]TokenType{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+func LookupIdent(ident string) TokenType {
+	if tok, ok := keywords[ident]; ok {
+		return tok
+	}
+	return IDENT
+}
