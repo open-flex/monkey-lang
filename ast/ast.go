@@ -31,6 +31,7 @@ func (i *Identifier) String() string       { return i.Token.Literal }
 
 type IntegerLiteral struct {
 	Token token.Token
+	Value int64
 }
 
 func (il *IntegerLiteral) expressionNode()      {}
